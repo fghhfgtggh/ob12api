@@ -11,6 +11,7 @@
 ## 功能特性
 
 - 🔄 **OpenAI 兼容** — `/v1/chat/completions`、`/v1/models`，直接对接主流客户端
+- 🤖 **Anthropic Messages API** — `/v1/messages`，兼容 Claude Code 等 Anthropic 原生客户端
 - 👥 **多账号轮换** — 缓存优先 / 平衡轮换 / 性能优先三种调度策略
 - 🔐 **自动 Token 管理** — 基于 WorkOS OAuth 设备授权，自动续期，401 即时重试
 - 📡 **流式输出** — 完整 SSE 流式响应，实时返回生成内容
