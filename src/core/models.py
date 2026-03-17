@@ -1,6 +1,7 @@
 """Pydantic models for OB1 2API."""
+
 from __future__ import annotations
-from typing import List, Optional, Union
+from typing import Any, List, Optional, Union
 from pydantic import BaseModel
 
 
@@ -16,3 +17,22 @@ class ChatCompletionRequest(BaseModel):
     temperature: Optional[float] = None
     top_p: Optional[float] = None
     max_tokens: Optional[int] = None
+    tools: Optional[List[dict[str, Any]]] = None
+    tool_choice: Optional[Union[str, dict[str, Any]]] = None
+
+
+class AnthropicMessage(BaseModel):
+    role: str
+    content: Union[str, List[dict[str, Any]]]
+
+
+class AnthropicMessagesRequest(BaseModel):
+    model: str = "anthropic/claude-opus-4.6"
+    messages: List[AnthropicMessage]
+    max_tokens: int = 4096
+    system: Optional[Union[str, List[dict[str, Any]]]] = None
+    stream: bool = False
+    temperature: Optional[float] = None
+    top_p: Optional[float] = None
+    tools: Optional[List[dict[str, Any]]] = None
+    tool_choice: Optional[dict[str, Any]] = None
